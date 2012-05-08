@@ -23,5 +23,8 @@ default[:collectd][:types_db] = ["/usr/share/collectd/types.db"]
 default[:collectd][:interval] = 10
 default[:collectd][:read_threads] = 5
 
+# Configure this if you want to link client nodes to a server node
+default[:collectd][:plugin][:network][:server] = []
+
 default[:collectd][:collectd_web][:path] = "/srv/collectd_web"
 default[:collectd][:collectd_web][:hostname] = "collectd"
