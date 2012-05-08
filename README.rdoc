@@ -1,14 +1,12 @@
 = DESCRIPTION:
 
-Configure and install the collectd[http://collectd.org/] monitoring daemon.
+Configure and install the collectd[http://collectd.org/] monitoring daemon and plugins.
 
 = REQUIREMENTS:
 
 This cookbook has only been tested on Ubuntu 10.04.
 
 To use the collectd_web recipe you need the apache2[https://github.com/opscode/cookbooks/tree/master/apache2] cookbook.
-
-The collectd_plugins cookbook is not required, but provides many common plugin definitions for easy reuse.
 
 = ATTRIBUTES:
 
@@ -26,6 +24,14 @@ Three main recipes are provided:
 * collectd - Install a standalone daemon.
 * collectd::client - Install collectd and configure it to send data to a server.
 * collectd::server - Install collectd and configure it to recieve data from clients.
+* collectd::rrdtool_plugin - Output to RRD database files.
+* collectd::syslog_plugin - Log errors to syslog.
+* collectd::cpu_plugin - CPU usage.
+* collectd::df_plugin - Free space on disks.
+* collectd::disk_plugin - Disk I/O operations.
+* collectd::interface_plugin - Network I/O operations.
+* collectd::memory_plugin - Memory usage.
+* collectd::swap_plugin - Swap file usage.
 
 The client recipe will use the search index to automatically locate the server hosts, so no manual configuration is required.
 
