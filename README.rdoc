@@ -58,15 +58,6 @@ The +collectd_python_plugin+ define configures and enables Python plugins using 
       options :host=>servers, :verbose=>true
     end
 
-Options are interpreted in the same way as with +collectd_plugin+. This define will not deploy the plugin script as well, so be sure to setup a cookbook_file resource
-or other mechanism to handle distribution. Example:
-
-    cookbook_file File.join(node[:collectd][:plugin_dir], "redis.py") do
-      owner "root"
-      group "root"
-      mode "644"
-    end
-
 == Web frontend:
 
 The +collectd::collectd_web+ recipe will automatically deploy the collectd_web[https://github.com/httpdss/collectd-web] frontend using Apache. The 
