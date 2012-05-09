@@ -8,8 +8,9 @@ This cookbook has only been tested on Ubuntu.
 
 = ATTRIBUTES:
 
-* collectd.interval - Time period in seconds to wait between data reads.
-* collectd.read_threads - The number of threads performing data reads.
+* collectd.name - The hostname of the node as reported in statistics. Defaults to `node['fqdn']`.
+* collectd.interval - Time period in seconds to wait between data reads. Defaults to 10.
+* collectd.read_threads - The number of threads performing data reads. Defaults to 5.
 
 = USAGE:
 

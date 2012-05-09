@@ -11,7 +11,7 @@
 # You should also read /usr/share/doc/collectd/README.Debian.plugins before
 # enabling any more plugins.
 
-Hostname "<%= node[:fqdn] %>"
+Hostname "<%= node[:collectd][:name] %>"
 FQDNLookup true
 BaseDir "<%= node[:collectd][:base_dir] %>"
 PluginDir "<%= node[:collectd][:plugin_dir] %>"
