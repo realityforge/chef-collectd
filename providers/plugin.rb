@@ -16,13 +16,13 @@
 
 action :create do
   filename = "/etc/collectd/plugins/#{new_resource.name}.conf"
-  if new_resource.config_data
+  if new_resource.content
     file filename do
       owner "root"
       group "root"
       mode "644"
       action :create
-      content new_resource.config_data
+      content new_resource.content
       notifies :restart, resources(:service => "collectd")
     end
   else
@@ -30,9 +30,9 @@ action :create do
       owner "root"
       group "root"
       mode "644"
-      source params[:template] || "plugin.conf.erb"
-      cookbook params[:cookbook] || "collectd"
-      variables :name => (new_resource.type || new_resource.name), :config => new_resource.config
+      source new_resource.template
+      cookbook new_resource.cookbook
+      variables :type => (new_resource.type || new_resource.name), :config => new_resource.config
       notifies :restart, resources(:service => "collectd")
     end
   end
