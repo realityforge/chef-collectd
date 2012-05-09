@@ -4,63 +4,47 @@ Configure and install the collectd[http://collectd.org/] monitoring daemon and p
 
 = REQUIREMENTS:
 
-This cookbook has only been tested on Ubuntu 10.04.
-
-To use the collectd_web recipe you need the apache2[https://github.com/opscode/cookbooks/tree/master/apache2] cookbook.
+This cookbook has only been tested on Ubuntu.
 
 = ATTRIBUTES:
 
-* collectd.basedir - Base folder for collectd output data.
-* collectd.plugin_dir - Base folder to find plugins.
-* collectd.types_db - Array of files to read graph type information from.
 * collectd.interval - Time period in seconds to wait between data reads.
-
-* collectd.collectd_web.path - Location to install collectd_web to. Defaults to /srv/collectd_web.
-* collectd.collectd_web.hostname - Server name to use for collectd_web Apache site.
+* collectd.read_threads - The number of threads performing data reads.
 
 = USAGE:
 
-Three main recipes are provided:
+There is one main recipes provided:
+
 * collectd - Install a standalone daemon.
-* collectd::client - Install collectd and configure it to send data to servers defined by `node[:collectd][:plugin][:network][:server]`.
-* collectd::server - Install collectd and configure it to recieve data from clients.
-* collectd::rrdtool_plugin - Output to RRD database files.
-* collectd::syslog_plugin - Log errors to syslog.
-* collectd::cpu_plugin - CPU usage.
-* collectd::df_plugin - Free space on disks.
-* collectd::disk_plugin - Disk I/O operations.
-* collectd::interface_plugin - Network I/O operations.
-* collectd::memory_plugin - Memory usage.
-* collectd::swap_plugin - Swap file usage.
 
-== Defines:
+== Resources:
 
-Several defines are provided to simplfy configuring plugins
+There is one resource provided to manage collectd configuration.
 
 === collectd_plugin:
 
-The +collectd_plugin+ define configures and enables standard collect plugins. Example:
+The +collectd_plugin+ resource configures and enables standard collect plugins. Example:
     
     collectd_plugin "interface" do
-      options :interface=>"lo", :ignore_selected=>true
+      config :interface => "lo", :ignore_selected => true
     end
 
 The options hash is converted to collectd-style settings automatically. Any symbol key will be converted to camel-case. In the above example :ignore_selected will be output as the
 key "IgnoreSelected". If the key is already a string, this conversion is skipped. If the value is an array, it will be output as a separate line for each element.
 
-=== collectd_python_plugin:
+The +collectd_plugin+ resource can also use templates for more complex configuration. Example:
 
-The +collectd_python_plugin+ define configures and enables Python plugins using the collectd-python plugin. Example:
-    
-    collectd_python_plugin "redis" do
-      options :host=>servers, :verbose=>true
+    collectd_plugin "interface" do
+      template "generic_jmx.conf.erb"
+      cookbook "java-monitoring"
+      config :host => "127.0.0.1", :port => 2020
     end
 
-== Web frontend:
+The +collectd_plugin+ resource can also use content directly in recipe. Example:
 
-The +collectd::collectd_web+ recipe will automatically deploy the collectd_web[https://github.com/httpdss/collectd-web] frontend using Apache. The 
-apache2[https://github.com/opscode/cookbooks/tree/master/apache2] cookbook is required for this and is *not* included automatically as this is an optional
-component, so be sure to configure the node with the correct recipes.
+    collectd_plugin "interface" do
+      content 'LoadPlugin "foo"'
+    end
 
 = LICENSE & AUTHOR:
 
