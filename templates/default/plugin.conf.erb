@@ -7,7 +7,7 @@ LoadPlugin "<%= @type %>"
 <% if not @config.empty? %>
 <Plugin "<%= @type %>">
   <% @config.each_pair do |key, value|
-    if value.is_a? Array 
+    if value.is_a? Array
       value.each do |subvalue| %>
   <%= collectd_key(key) %> <%= collectd_option(subvalue) %>
   <% end else %>
