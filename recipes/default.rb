@@ -37,11 +37,11 @@ service "collectd" do
   supports :restart => true, :status => true
 end
 
-template "/etc/init.d/collectd.conf" do
-  source "collectd.conf.erb"
+template "/etc/init.d/collectd" do
+  source "collectd.init.erb"
   owner "root"
   group "root"
-  mode "644"
+  mode "755"
   notifies :restart, resources(:service => "collectd")
 end
 
