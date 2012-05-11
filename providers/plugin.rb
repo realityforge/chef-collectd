@@ -26,13 +26,14 @@ action :create do
       notifies :restart, resources(:service => "collectd")
     end
   else
+    type = new_resource.type || new_resource.name
     template filename do
       owner "root"
       group "root"
       mode "644"
       source new_resource.template
       cookbook new_resource.cookbook
-      variables :type => (new_resource.type || new_resource.name), :config => new_resource.config
+      variables :type => type, :config => new_resource.config
       notifies :restart, resources(:service => "collectd")
     end
   end
