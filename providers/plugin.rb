@@ -13,6 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+CUSTOM_TEMPLATES = [ "write_graphite" ]
+
+def template_map(type)
+   plugin_prefix = CUSTOM_TEMPLATES.include?(type.to_s) ? "#{type}_" : ""
+  "#{plugin_prefix}plugin.conf.erb"
+end
 
 action :create do
   filename = "#{node[:collectd][:conf_dir]}/#{new_resource.name}.conf"
@@ -27,11 +33,12 @@ action :create do
     end
   else
     type = new_resource.type || new_resource.name
+    template = new_resource.template || template_map(type)
     template filename do
       owner "root"
       group "root"
       mode "644"
-      source new_resource.template
+      source template
       cookbook new_resource.cookbook
       variables :type => type, :config => new_resource.config
       notifies :restart, resources(:service => "collectd")

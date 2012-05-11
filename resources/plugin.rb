@@ -19,7 +19,7 @@ actions :create
 attribute :name, :kind_of => String, :name_attribute => true
 
 attribute :content, :kind_of => String, :default => nil
-attribute :template, :kind_of => String, :default => "plugin.conf.erb"
+attribute :template, :kind_of => String, :default => nil
 attribute :cookbook, :kind_of => String, :default => "collectd"
 
 attribute :type, :kind_of => String, :default => nil
