@@ -15,7 +15,7 @@
 #
 
 action :create do
-  filename = "/etc/collectd/plugins/#{new_resource.name}.conf"
+  filename = "#{node[:collectd][:conf_dir]}/#{new_resource.name}.conf"
   if new_resource.content
     file filename do
       owner "root"
