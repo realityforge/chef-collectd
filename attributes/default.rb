@@ -28,3 +28,5 @@ override[:collectd][:types_db] = ["/opt/collectd/share/collectd/types.db"]
 default[:collectd][:interval] = 10
 default[:collectd][:read_threads] = 5
 default[:collectd][:name] = node[:fqdn]
+
+default[:collectd][:plugins] = Mash.new
