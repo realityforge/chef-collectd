@@ -33,16 +33,16 @@ CMD
   creates node[:collectd][:base_dir]
 end
 
-service "collectd" do
-  supports :restart => true, :status => true
-end
-
 template "/etc/init.d/collectd" do
   source "collectd.init.erb"
   owner "root"
   group "root"
   mode "755"
-  notifies :restart, resources(:service => "collectd")
+  notifies :restart, "service[collectd]", :delayed
+end
+
+service "collectd" do
+  supports :restart => true, :status => true
 end
 
 directory node[:collectd][:base_dir] do
