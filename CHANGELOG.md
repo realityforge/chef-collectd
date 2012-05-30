@@ -1,3 +1,7 @@
+## v1.1.1:
+
+* Change  : Update to conform to foodcritic style recommendations.
+
 ## v1.1.0:
 
 * Change  : Make the name reported in the configuration configurable.
