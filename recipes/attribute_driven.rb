@@ -19,8 +19,8 @@ include_recipe "collectd::default"
 node[:collectd][:plugins].each_pair do |plugin_key, definition|
   collectd_plugin plugin_key.to_s do
     config definition[:config].to_hash if definition[:config]
-    config definition[:template].to_s if definition[:template]
-    config definition[:cookbook].to_s if definition[:cookbook]
-    config definition[:type].to_s if definition[:type]
+    template definition[:template].to_s if definition[:template]
+    cookbook definition[:cookbook].to_s if definition[:cookbook]
+    type definition[:type].to_s if definition[:type]
   end
 end
