@@ -21,7 +21,7 @@ def template_map(type)
 end
 
 action :create do
-  filename = "#{node[:collectd][:conf_dir]}/#{new_resource.name}.conf"
+  filename = "#{node['collectd']['conf_dir']}/#{new_resource.name}.conf"
   if new_resource.content
     file filename do
       owner "root"

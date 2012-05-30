@@ -17,16 +17,16 @@
 # limitations under the License.
 #
 
-override[:collectd][:version] = "5.1.0"
-override[:collectd][:url] = "http://collectd.org/files/collectd-#{node[:collectd][:version]}.tar.gz"
+override['collectd']['version'] = "5.1.0"
+override['collectd']['url'] = "http://collectd.org/files/collectd-#{node['collectd']['version']}.tar.gz"
 
-override[:collectd][:base_dir] = "/opt/collectd"
-override[:collectd][:conf_dir] = "/opt/collectd/etc/conf.d"
-override[:collectd][:plugin_dir] = "/opt/collectd/lib/collectd"
-override[:collectd][:types_db] = ["/opt/collectd/share/collectd/types.db"]
+override['collectd']['base_dir'] = "/opt/collectd"
+override['collectd']['conf_dir'] = "/opt/collectd/etc/conf.d"
+override['collectd']['plugin_dir'] = "/opt/collectd/lib/collectd"
+override['collectd']['types_db'] = ["/opt/collectd/share/collectd/types.db"]
 
-default[:collectd][:interval] = 10
-default[:collectd][:read_threads] = 5
-default[:collectd][:name] = node[:fqdn]
+default['collectd']['interval'] = 10
+default['collectd']['read_threads'] = 5
+default['collectd']['name'] = node['fqdn']
 
-default[:collectd][:plugins] = Mash.new
+default['collectd']['plugins'] = Mash.new

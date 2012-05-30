@@ -11,12 +11,12 @@
 # You should also read /usr/share/doc/collectd/README.Debian.plugins before
 # enabling any more plugins.
 
-Hostname "<%= node[:collectd][:name] %>"
+Hostname "<%= node['collectd']['name'] %>"
 FQDNLookup true
-BaseDir "<%= node[:collectd][:base_dir] %>"
-PluginDir "<%= node[:collectd][:plugin_dir] %>"
-TypesDB "<%= node[:collectd][:types_db].join('", "') %>"
-Interval <%= node[:collectd][:interval] %>
-ReadThreads <%= node[:collectd][:read_threads] %>
+BaseDir "<%= node['collectd']['base_dir'] %>"
+PluginDir "<%= node['collectd']['plugin_dir'] %>"
+TypesDB "<%= node['collectd']['types_db'].join('", "') %>"
+Interval <%= node['collectd']['interval'] %>
+ReadThreads <%= node['collectd']['read_threads'] %>
 
-Include "<%= node[:collectd][:conf_dir] %>/*.conf"
+Include "<%= node['collectd']['conf_dir'] %>/*.conf"

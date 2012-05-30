@@ -26,14 +26,14 @@ DISABLE=0
 
 DESC="statistics collection and monitoring daemon"
 NAME=collectd
-DAEMON=<%= node[:collectd][:base_dir] %>/sbin/collectd
+DAEMON=<%= node['collectd']['base_dir'] %>/sbin/collectd
 
-CONFIGFILE=<%= node[:collectd][:base_dir] %>/etc/collectd.conf
-PIDFILE=<%= node[:collectd][:base_dir] %>/var/run/collectd.pid
+CONFIGFILE=<%= node['collectd']['base_dir'] %>/etc/collectd.conf
+PIDFILE=<%= node['collectd']['base_dir'] %>/var/run/collectd.pid
 
 USE_COLLECTDMON=1
-COLLECTDMON_DAEMON=<%= node[:collectd][:base_dir] %>/sbin/collectdmon
-COLLECTDMON_PIDFILE=<%= node[:collectd][:base_dir] %>/var/run/collectdmon.pid
+COLLECTDMON_DAEMON=<%= node['collectd']['base_dir'] %>/sbin/collectdmon
+COLLECTDMON_PIDFILE=<%= node['collectd']['base_dir'] %>/var/run/collectdmon.pid
 
 MAXWAIT=30
 

@@ -18,19 +18,19 @@
 #
 
 execute "install collectd" do
-  filename = File.basename(node[:collectd][:url])
-  dirname = File.basename(node[:collectd][:url], ".tar.gz")
+  filename = File.basename(node['collectd']['url'])
+  dirname = File.basename(node['collectd']['url'], ".tar.gz")
   command <<CMD
 cd /usr/src
 rm -rf #{dirname}
-wget #{node[:collectd][:url]}
+wget #{node['collectd']['url']}
 tar xzf #{filename}
 cd #{dirname}
 ./configure
 make
 make install
 CMD
-  creates node[:collectd][:base_dir]
+  creates node['collectd']['base_dir']
 end
 
 template "/etc/init.d/collectd" do
@@ -45,21 +45,21 @@ service "collectd" do
   supports :restart => true, :status => true
 end
 
-directory node[:collectd][:base_dir] do
+directory node['collectd']['base_dir'] do
   owner "root"
   group "root"
   mode "755"
   recursive true
 end
 
-directory node[:collectd][:conf_dir] do
+directory node['collectd']['conf_dir'] do
   owner "root"
   group "root"
   mode "755"
   recursive true
 end
 
-template "#{node[:collectd][:base_dir]}/etc/collectd.conf" do
+template "#{node['collectd']['base_dir']}/etc/collectd.conf" do
   source "collectd.conf.erb"
   owner "root"
   group "root"
