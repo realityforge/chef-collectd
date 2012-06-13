@@ -24,3 +24,16 @@ node['collectd']['plugins'].each_pair do |plugin_key, definition|
     type definition['type'].to_s if definition['type']
   end
 end
+
+conf_dir = node['collectd']['conf_dir']
+keys = node['collectd']['plugins'].keys.collect{|k| k.to_s}
+::Dir.entries(conf_dir).each do |entry|
+  conf_file = "#{conf_dir}/#{entry}"
+  if ::File.file?(conf_file) && conf_file =~ /.*\.conf$/ && !keys.include?(File.basename(entry, ".conf"))
+    file conf_file do
+      action :delete
+      backup false
+      notifies :restart, resources(:service => "collectd"), :delayed
+    end
+  end
+end if File.exist?(conf_dir)

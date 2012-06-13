@@ -1,3 +1,8 @@
+## v1.1.2:
+
+* Change  : In the `collectd::attribute_driven' recipe, remove plugin configurations from the disk if they
+            have been removed from the configuration.
+
 ## v1.1.1:
 
 * Change  : Update to conform to foodcritic style recommendations.
