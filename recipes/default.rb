@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe "build-essential"
+
 execute "install collectd" do
   filename = File.basename(node['collectd']['url'])
   dirname = File.basename(node['collectd']['url'], ".tar.gz")
