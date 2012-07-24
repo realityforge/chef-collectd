@@ -1,3 +1,7 @@
+## v1.1.3:
+
+* Bug     : Ensure that the service is terminated after $MAXWAIT time rather than allowing a hung process to continue.
+
 ## v1.1.2:
 
 * Change  : In the `collectd::attribute_driven' recipe, remove plugin configurations from the disk if they

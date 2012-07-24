@@ -115,8 +115,7 @@ d_stop() {
 			echo -n " ."
 
 			if test $i -gt $MAXWAIT; then
-				echo "$still_running_warning" >&2
-				return 1
+				kill -9 $PID
 			fi
 
 			sleep 2
