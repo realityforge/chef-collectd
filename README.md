@@ -34,7 +34,7 @@ There is one resource provided to manage collectd configuration.
 -----------------
 
 The +collectd_plugin+ resource configures and enables standard collect plugins. Example:
-    
+
     collectd_plugin "interface" do
       config :interface => "lo", :ignore_selected => true
     end
@@ -55,6 +55,9 @@ The `collectd_plugin` resource can also use content directly in recipe. Example:
       content 'LoadPlugin "foo"'
     end
 
+Note: if you get "Could not find plugin foobar" or "foobar wasn't loaded using LoadPlugin" then you might need to reinstall collectd.
+Some plugins in collectd (e.g. mysql) require all the dependencies to be installed *before* you run `configure && make and make install`
+on collectd.
 
 Credits
 =======
