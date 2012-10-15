@@ -6,14 +6,18 @@ LoadPlugin "<%= @type %>"
 
 <% if not @config.empty? %>
 <Plugin "<%= @type %>">
- <Database <%= @config['Database'] %>>
-  <% @config.each_pair do |key, value|
-    if value.is_a? Array
-      value.each do |subvalue| %>
-  <%= collectd_key(key) %> <%= collectd_option(subvalue) %>
-  <% end else %>
-  <%= collectd_key(key) %> <%= collectd_option(value) %>
-  <% end end %>
- </Database>
+<% @config.each_pair do |db_name, db_info| %>
+  <%= "<Database #{db_name}>" %>
+  <% if not db_info.empty? %>
+    <% db_info.each_pair do |key, value|
+      if value.is_a? Array
+        value.each do |subvalue| %>
+    <%= key %> <%= collectd_option(subvalue) %>
+    <% end else %>
+    <%= key %> <%= collectd_option(value) %>
+    <% end end %>
+  <% end %>
+  <%= "</Database>" %>
+<% end %>
 </Plugin>
 <% end %>
