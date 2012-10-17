@@ -6,10 +6,10 @@ LoadPlugin "<%= @type %>"
 
 <% if not @config.empty? %>
 <Plugin "<%= @type %>">
-<% @config.each_pair do |db_name, db_info| %>
+<% @config.sort{|a,b| a[0].to_s <=> b[0].to_s}.map do |db_name, db_info| %>
   <%= "<Database #{db_name}>" %>
   <% if not db_info.empty? %>
-    <% db_info.each_pair do |key, value|
+    <% db_info.sort{|a,b| a[0].to_s <=> b[0].to_s}.map do |key, value|
       if value.is_a? Array
         value.each do |subvalue| %>
     <%= key %> <%= collectd_option(subvalue) %>
