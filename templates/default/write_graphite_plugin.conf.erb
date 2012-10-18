@@ -7,7 +7,7 @@ LoadPlugin "<%= @type %>"
 <% if not @config.empty? %>
 <Plugin "<%= @type %>">
  <Carbon>
-  <% @config.each_pair do |key, value|
+  <% @config.sort{|a,b| a[0].to_s <=> b[0].to_s}.map do |key, value|
     if value.is_a? Array
       value.each do |subvalue| %>
   <%= collectd_key(key) %> <%= collectd_option(subvalue) %>
