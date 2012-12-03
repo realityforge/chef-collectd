@@ -1,5 +1,5 @@
 ## v1.1.5:
-* Change  : Use default_action syntaxt to define the default action.
+* Change  : Use default_action syntax to define the default action.
 
 ## v1.1.3:
 
