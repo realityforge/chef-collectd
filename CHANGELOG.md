@@ -1,3 +1,6 @@
+## v1.1.5:
+* Change  : Use default_action syntaxt to define the default action.
+
 ## v1.1.3:
 
 * Bug     : Ensure that the service is terminated after $MAXWAIT time rather than allowing a hung process to continue.
