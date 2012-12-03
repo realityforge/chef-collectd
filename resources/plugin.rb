@@ -20,7 +20,7 @@ attribute :name, :kind_of => String, :name_attribute => true
 
 attribute :content, :kind_of => String, :default => nil
 attribute :template, :kind_of => String, :default => nil
-attribute :cookbook, :kind_of => String, :default => "collectd"
+attribute :cookbook, :kind_of => String, :default => 'collectd'
 
 attribute :type, :kind_of => String, :default => nil
 attribute :config, :kind_of => Hash, :default => {}
