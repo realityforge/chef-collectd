@@ -20,7 +20,12 @@ def template_map(type)
   "#{plugin_prefix}plugin.conf.erb"
 end
 
-action :create do
+notifying_action :create do
+  service 'collectd' do
+    supports :restart => true, :status => true
+    action :nothing
+  end
+
   filename = "#{node['collectd']['conf_dir']}/#{new_resource.name}.conf"
   if new_resource.content
     file filename do
@@ -29,7 +34,7 @@ action :create do
       mode "644"
       action :create
       content new_resource.content
-      notifies :restart, resources(:service => "collectd")
+      notifies :restart, 'service[collectd]', :delayed
     end
   else
     type = new_resource.type || new_resource.name
@@ -41,7 +46,7 @@ action :create do
       source template
       cookbook new_resource.cookbook
       variables :type => type, :config => new_resource.config
-      notifies :restart, resources(:service => "collectd")
+      notifies :restart, 'service[collectd]', :delayed
     end
   end
 end
