@@ -1,6 +1,8 @@
 Description
 ===========
 
+[![Build Status](https://secure.travis-ci.org/realityforge/chef-collectd.png?branch=master)](http://travis-ci.org/realityforge/chef-collectd)
+
 Configure and install the collectd[http://collectd.org/] monitoring daemon and plugins.
 
 Requirements
