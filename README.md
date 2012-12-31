@@ -10,6 +10,9 @@ Requirements
 
 This cookbook has only been tested on Ubuntu.
 
+Note: apache plugin has a dependency on libcurl.
+(see https://collectd.org/wiki/index.php/Plugin:Apache)
+
 = ATTRIBUTES:
 
 Attributes
