@@ -17,9 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe "build-essential"
+include_recipe 'build-essential'
 
-execute "install collectd" do
+execute 'install collectd' do
   filename = File.basename(node['collectd']['url'])
   dirname = File.basename(node['collectd']['url'], ".tar.gz")
   command <<CMD
@@ -35,40 +35,40 @@ CMD
   creates node['collectd']['base_dir']
 end
 
-template "/etc/init.d/collectd" do
-  source "collectd.init.erb"
-  owner "root"
-  group "root"
-  mode "755"
-  notifies :restart, "service[collectd]", :delayed
+template '/etc/init.d/collectd' do
+  source 'collectd.init.erb'
+  owner 'root'
+  group 'root'
+  mode '755'
+  notifies :restart, 'service[collectd]', :delayed
 end
 
-service "collectd" do
+service 'collectd' do
   supports :restart => true, :status => true
 end
 
 directory node['collectd']['base_dir'] do
-  owner "root"
-  group "root"
-  mode "755"
+  owner 'root'
+  group 'root'
+  mode '755'
   recursive true
 end
 
 directory node['collectd']['conf_dir'] do
-  owner "root"
-  group "root"
-  mode "755"
+  owner 'root'
+  group 'root'
+  mode '755'
   recursive true
 end
 
 template "#{node['collectd']['base_dir']}/etc/collectd.conf" do
-  source "collectd.conf.erb"
-  owner "root"
-  group "root"
-  mode "644"
-  notifies :restart, resources(:service => "collectd")
+  source 'collectd.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '644'
+  notifies :restart, 'service[collectd]'
 end
 
-service "collectd" do
+service 'collectd' do
   action [:enable, :start]
 end

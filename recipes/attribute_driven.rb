@@ -33,7 +33,7 @@ keys = node['collectd']['plugins'].keys.collect{|k| k.to_s}
     file conf_file do
       action :delete
       backup false
-      notifies :restart, resources(:service => "collectd"), :delayed
+      notifies :restart, 'service[collectd]', :delayed
     end
   end
 end if File.exist?(conf_dir)
