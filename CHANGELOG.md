@@ -1,3 +1,6 @@
+## v1.2.1:
+Enhance   : Custom template for memcached_plugin
+
 ## v1.2.0:
 * Change  : Use collectd v5.2.1.
 
