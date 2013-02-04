@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-override['collectd']['version'] = "5.1.0"
+override['collectd']['version'] = "5.2.1"
 override['collectd']['url'] = "http://collectd.org/files/collectd-#{node['collectd']['version']}.tar.gz"
 
 override['collectd']['base_dir'] = "/opt/collectd"
