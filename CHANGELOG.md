@@ -1,3 +1,6 @@
+## v1.2.0:
+* Change  : Use collectd v5.2.1.
+
 ## v1.1.5:
 * Change  : Use default_action syntax to define the default action.
 
