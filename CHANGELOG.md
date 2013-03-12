@@ -1,6 +1,14 @@
-## v1.1.6:
+## v1.3.0:
 
 * Change  : Replace the use of cutlery dependency with Chef 11's use_inline_resources method.
+
+## v1.2.1:
+
+Enhance   : Custom template for memcached_plugin
+
+## v1.2.0:
+
+* Change  : Use collectd v5.2.1.
 
 ## v1.1.5:
 
