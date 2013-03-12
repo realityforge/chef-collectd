@@ -1,3 +1,5 @@
+## v1.3.2:
+
 ## v1.3.0:
 
 * Change  : Replace the use of cutlery dependency with Chef 11's use_inline_resources method.
