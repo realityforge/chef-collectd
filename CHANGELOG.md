@@ -1,4 +1,9 @@
+## v1.1.6:
+
+* Change  : Replace the use of cutlery dependency with Chef 11's use_inline_resources method.
+
 ## v1.1.5:
+
 * Change  : Use default_action syntax to define the default action.
 
 ## v1.1.3:

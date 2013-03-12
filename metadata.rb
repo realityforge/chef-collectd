@@ -8,4 +8,3 @@ version          "1.1.5"
 
 supports         "ubuntu"
 depends          "build-essential"
-depends 'cutlery', '~> 0.1'

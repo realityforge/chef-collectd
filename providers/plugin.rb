@@ -20,7 +20,9 @@ def template_map(type)
   "#{plugin_prefix}plugin.conf.erb"
 end
 
-notifying_action :create do
+use_inline_resources
+
+action :create do
   service 'collectd' do
     supports :restart => true, :status => true
     action :nothing
